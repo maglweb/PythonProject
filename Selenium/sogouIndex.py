@@ -5,6 +5,7 @@ import unittest
 from selenium import webdriver
 import time
 import sys
+from selenium.webdriver.support import expected_conditions as ec
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -24,10 +25,14 @@ class Test(unittest.TestCase):
 
     def test_01(self):
         u'验证元素'
+        self.driver.implicitly_wait(5)
         self.assertTrue(self.driver.title == u'搜狗搜索引擎 - 上网从搜狗开始')
 
     def test_02(self):
         self.driver.find_element_by_id('query').send_keys('selenium')
         self.driver.find_element_by_id('stb').click()
         time.sleep(5)
-        self.assertIn(self.driver.title,u'搜狗')
+        self.assertIn('selenium',self.driver.title)
+
+if __name__ == '__main__':
+    unittest.main()
