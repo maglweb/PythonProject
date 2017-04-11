@@ -34,5 +34,6 @@ class Test(unittest.TestCase):
         time.sleep(5)
         self.assertIn('selenium',self.driver.title)
 
+
 if __name__ == '__main__':
     unittest.main()
